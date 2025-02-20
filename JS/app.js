@@ -33,6 +33,13 @@ function loadCustomers() {
 
 loadCustomers();
 
+function clear() {
+    let name = document.getElementById("name").value = "";
+    let address = document.getElementById("address").value = "";
+    let salary = document.getElementById("salary").value = "";
+
+}
+
 function addCustomer() {
     loadCustomers();
     let name = document.getElementById("name").value;
@@ -60,6 +67,30 @@ function addCustomer() {
         .then((result) => console.log(result))
         .catch((error) => console.error(error));
 
+}
+
+function searchCustomerById() {
+    let searchValue = document.getElementById("searchCustomer").value;
+
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+      };
+      
+      fetch("http://localhost:8080/customer/search/"+searchValue, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+
+            if (result) {
+                document.getElementById("name").value = result.name;
+                document.getElementById("address").value = result.address;
+                document.getElementById("salary").value = result.salary;   
+            } else {
+                alert("Customer Not Found");
+            }
+})
+        .catch((error) => console.error(error));
+    
 }
 
 

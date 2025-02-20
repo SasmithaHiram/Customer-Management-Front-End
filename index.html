@@ -15,8 +15,11 @@
     <div class="container">
         <h3 class="text-center mb-4">Customer Management</h3>
         
-        <input type="text" class="form-control mb-3" placeholder="Search customers...">
-
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="searchCustomer" placeholder="Search customers...">
+            <button class="btn btn-primary" type="button" onclick="searchCustomerById()">Search</button>
+        </div>
+        
         <form>
             <div class="row">
                 <div class="col-md-4">
