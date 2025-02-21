@@ -72,3 +72,10 @@ input,
 button {
     font-size: 16px;
 }
+
+.btn-custom-size {
+    width: 100px;
+    height: 38px;
+    font-size: 14px;
+    padding: 6px 12px;
+}
