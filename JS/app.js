@@ -69,7 +69,7 @@ function addCustomer() {
     clear();
 }
 
-function searchCustomerById() {
+function searchCustomerByName() {
     let searchValue = document.getElementById("searchCustomer").value;
 
     const requestOptions = {
@@ -77,9 +77,10 @@ function searchCustomerById() {
         redirect: "follow"
     };
 
-    fetch("http://localhost:8080/customer/search/" + searchValue, requestOptions)
+    fetch("http://localhost:8080/customer/searchByName/"+searchValue, requestOptions)
         .then((response) => response.json())
         .then((result) => {
+console.log(result);
 
             if (result) {
                 document.getElementById("name").value = result.name;
@@ -92,30 +93,6 @@ function searchCustomerById() {
         .catch((error) => console.error(error));
 
 }
-
-// function searchCustomerByName() {
-//     let searchValue = document.getElementById("searchCustomer").value;
-
-//     const requestOptions = {
-//         method: "GET",
-//         redirect: "follow"
-//       };
-
-//       fetch("http://localhost:8080/customer/searchByName/"+searchValue, requestOptions)
-//         .then((response) => response.text())
-//         .then((result) => {
-
-//             if (result) {
-//                 document.getElementById("name").value = result.name;
-//                 document.getElementById("address").value = result.address;
-//                 document.getElementById("salary").value = result.salary;
-//             } else {
-//                 alert("Customer")
-//             }
-//             console.log(result)})
-//         .catch((error) => console.error(error));
-
-// }
 
 function updateCustomer() {
     let id = document.getElementById("updateId").value;
@@ -147,6 +124,23 @@ function updateCustomer() {
             console.log(result)})
         .catch((error) => console.error(error));
 
+}
+
+function deleteCustomer() {
+    let idValue = document.getElementById("deleteId").value;
+    
+    const requestOptions = {
+        method: "DELETE",
+        redirect: "follow"
+      };
+      
+      fetch("http://localhost:8080/customer/delete/" + idValue, requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+            loadCustomers();
+            console.log(result)})
+        .catch((error) => console.error(error));
+    
 }
 
 
