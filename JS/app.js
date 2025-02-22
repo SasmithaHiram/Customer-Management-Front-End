@@ -30,6 +30,7 @@ function loadCustomers() {
 loadCustomers();
 
 function clear() {
+    let search = document.getElementById("searchCustomer").value = "";
     let name = document.getElementById("name").value = "";
     let address = document.getElementById("address").value = "";
     let salary = document.getElementById("salary").value = "";
@@ -87,6 +88,7 @@ function searchCustomerById() {
 
 
 function updateCustomer() {
+    clear();
     let id = document.getElementById("updateId").value;
     let name = document.getElementById("updateName").value;
     let address = document.getElementById("updateAddress").value;
